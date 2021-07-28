@@ -1,17 +1,14 @@
 const form = document.getElementById('search-form')
-const url = 'https://proxy-itunes-api.glitch.me/search?term=ariana+grande&country=us&entity=song&limit=5'
+let url = 'https://proxy-itunes-api.glitch.me/search?country=us&entity=song&limit=5&term='
 const resultsList = document.getElementById('results-list')
 
   //Event listener
 
 form.addEventListener('submit', function (event) {
     event.preventDefault()
-    const searchText = document.getElementById('search-text').value
-    console.log(searchText)
+    let searchText = document.getElementById('search-text').value
 
-    // addSearchParameter ()
-
-    returnSearch()
+    returnSearch(searchText)
     form.reset()
 })
 
@@ -30,22 +27,14 @@ function searchResultsText (songItem, songObj){
 }
 
 
-//This function is in progress to add characters to search value so that they match the parameters
-function addSearchParameter (){
-  const searchText = document.getElementById('search-text').value
-  const searchToString = String(searchText)
-  console.log(searchText)
-  console.log(searchToString)
-  const refactoredSearch = encodeURIComponent(searchToString).replace(/%20/g, "+")
-  console.log(refactoredSearch)
-}
-
-//add variable to turn addSearch Parameter function result as a global variable
-
 
 //CRUD function to display results
-function returnSearch() {
-  fetch(url) 
+function returnSearch(searchText) {
+  //first create variable to get rid of any spaces in searchText 
+  const searchToString = String(searchText)
+  const refactoredSearch = encodeURIComponent(searchToString).replace(/%20/g, "+")
+
+  fetch(url += refactoredSearch) 
     .then((response) => response.json())
     .then((data) => {
       console.log(data, 'data')
