@@ -15,32 +15,31 @@ form.addEventListener('submit', function (e) {
 
     returnSearch()
     form.reset()
-  })
+})
 
-// function addSearchParameter (){
-//   const artistText = document.getElementById('artist-text').value
-//   const searchToString = String(artistText)
-//   console.log(artistText)
-//   console.log(searchToString)
-//   const refactoredSearch = encodeURIComponent(searchToString).replace(/%20/g, "+")
-//   console.log(refactoredSearch)
-// }
+//This function is in progress to add characters to search value so that they match the parameters
+function addSearchParameter (){
+  const artistText = document.getElementById('artist-text').value
+  const searchToString = String(artistText)
+  console.log(artistText)
+  console.log(searchToString)
+  const refactoredSearch = encodeURIComponent(searchToString).replace(/%20/g, "+")
+  console.log(refactoredSearch)
+}
   
 
 //CRUD function to display results
-
 function returnSearch() {
-  fetch(url)
+  fetch(url) 
     .then((response) => response.json())
     .then((data) => {
       console.log(data, 'data')
-      if (Array.isArray()) {
-        for (const i = 0; i < data.length; i++){
-          console.log(data[0])
-
+      let results = data.results
+        for (let song of results){
+          console.log(song)
+          //add function to display results on page
       }
-      }
-    })
+  })
 }
 
 
