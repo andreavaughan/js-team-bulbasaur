@@ -1,8 +1,6 @@
 const form = document.getElementById('search-form')
 const url = 'https://proxy-itunes-api.glitch.me/search?term=ariana+grande&country=us&entity=song&limit=5'
-const searchList = document.getElementById('search-list')
-
-
+const resultsList = document.getElementById('results-list')
 
   //Event listener
 
@@ -20,14 +18,15 @@ form.addEventListener('submit', function (event) {
 //This function renders the search results on the page
 function renderSearchResults(songObj) {
   let resultItem = document.createElement('li')
+  console.log(resultItem)
   resultItem.classList.add('card')
   searchResultsText(resultItem, songObj)
-  searchList.appendChild(resultItem)
+  resultsList.appendChild(resultItem)
 }
 
 //This function adds the text of the search results on the page
 function searchResultsText (songItem, songObj){
-  songItem.innerHTML = `<span>${songObj}</span>`
+  songItem.innerHTML = `<span>${songObj.trackName}</span>`
 }
 
 
@@ -52,7 +51,6 @@ function returnSearch() {
       console.log(data, 'data')
       let results = data.results
         for (let song of results){
-          console.log(song)
           renderSearchResults(song)
       }
   })
