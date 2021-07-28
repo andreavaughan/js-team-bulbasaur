@@ -1,15 +1,14 @@
-const form = document.querySelector('#artist-form')
+const form = document.getElementById('search-form')
 const url = 'https://proxy-itunes-api.glitch.me/search?term=ariana+grande&country=us&entity=song&limit=5'
-// const movieList = document.querySelector('#movie-list')
 
 
 
   //Event listener
 
-form.addEventListener('submit', function (e) {
-    e.preventDefault()
-    const artistText = document.getElementById('artist-text').value
-    console.log(artistText)
+form.addEventListener('submit', function (event) {
+    event.preventDefault()
+    const searchText = document.getElementById('search-text').value
+    console.log(searchText)
 
     // addSearchParameter ()
 
@@ -19,14 +18,16 @@ form.addEventListener('submit', function (e) {
 
 //This function is in progress to add characters to search value so that they match the parameters
 function addSearchParameter (){
-  const artistText = document.getElementById('artist-text').value
-  const searchToString = String(artistText)
-  console.log(artistText)
+  const searchText = document.getElementById('search-text').value
+  const searchToString = String(searchText)
+  console.log(searchText)
   console.log(searchToString)
   const refactoredSearch = encodeURIComponent(searchToString).replace(/%20/g, "+")
   console.log(refactoredSearch)
 }
-  
+
+//add variable to turn addSearch Parameter function result as a global variable
+
 
 //CRUD function to display results
 function returnSearch() {
