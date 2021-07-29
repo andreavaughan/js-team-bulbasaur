@@ -7,7 +7,7 @@ const resultsList = document.getElementById('results-list')
 form.addEventListener('submit', function (event) {
     event.preventDefault()
     let searchText = document.getElementById('search-text').value
-
+    resultsList.innerHTML = ''
     returnSearch(searchText)
     form.reset()
 })
@@ -23,7 +23,7 @@ function renderSearchResults(songObj) {
 
 //This function adds the text of the search results on the page
 function searchResultsText (songItem, songObj){
-  songItem.innerHTML = `<span><img src="${songObj.artworkUrl100}"><h3>${songObj.trackName}</h3><h4>${songObj.artistName}</h4><p>${songObj.collectionName}</p><p>${songObj.releaseDate}</p></span>`
+  songItem.innerHTML = `<span><img src="${songObj.artworkUrl100}"><h3>${songObj.trackName}</h3><h4>${songObj.artistName}</h4><p>${songObj.collectionName}</p><p>${moment(songObj.releaseDate).format('MMM d YYYY')}</p></span>`
 }
 
 
