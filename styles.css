@@ -1,3 +1,30 @@
 body {
     padding: 2em;
 }
+
+.card {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 1em;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.result-item {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-section {
+    margin: 2em;
+}
+
+.search-results {
+    margin: 1em;
+}

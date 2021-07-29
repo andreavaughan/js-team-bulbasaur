@@ -14,7 +14,7 @@ form.addEventListener('submit', function (event) {
 
 //This function renders the search results on the page
 function renderSearchResults(songObj) {
-  let resultItem = document.createElement('li')
+  let resultItem = document.createElement('div')
   console.log(resultItem)
   resultItem.classList.add('card')
   searchResultsText(resultItem, songObj)
@@ -23,7 +23,7 @@ function renderSearchResults(songObj) {
 
 //This function adds the text of the search results on the page
 function searchResultsText (songItem, songObj){
-  songItem.innerHTML = `<span><img src="${songObj.artworkUrl100}"><h3>${songObj.trackName}</h3><h4>${songObj.artistName}</h4><p>${songObj.collectionName}</p><p>${moment(songObj.releaseDate).format('MMM d YYYY')}</p></span>`
+  songItem.innerHTML = `<span class="result-item"><img src="${songObj.artworkUrl100}"><h3>${songObj.trackName}</h3><h4>${songObj.artistName}</h4><p>${songObj.collectionName}</p><p>${moment(songObj.releaseDate).format('MMM d YYYY')}</p><button>Play Bite &#127852</button></span>`
 }
 
 
